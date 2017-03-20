@@ -1,0 +1,156 @@
+<!doctype html>
+<html class="no-js" lang="" ng-app="colorizr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Colorizr - Materialize your color</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="angular-bootstrap/ui-bootstrap-csp.css" />
+    <link rel="stylesheet" href="angular-bootstrap-colorpicker/css/colorpicker.css" />
+    <style>
+        html,body{
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fafafa;
+        }
+
+        .sep{
+            border-top: 10px solid #fff;
+        }
+        h3 small{
+            color:#fff;
+        }
+        input[type=text],input[type=color]{
+            border: 1px solid rgba(0,0,0,.1);
+            font-size: 24px;
+            width: 100%;
+            box-sizing: border-box;
+            height: 50px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+        input:focus,input:active{
+            outline: none;
+        }
+        h3,h5{
+            color: #fff;
+            text-shadow: 1px 0 1px rgba(0,0,0,.4);
+            margin: 1em;
+        }
+        .md-btn-fab:hover{
+            -webkit-transform: scale(1.2) rotate(90deg);
+            transform: scale(1.2) rotate(90deg);
+        }
+        .md-btn-fab{
+            border-radius: 50%;
+            display:block;
+            position: absolute;
+            width:70px;
+            height: 70px;
+            bottom:-35px;
+            right: 25px;
+            text-align: center;
+            line-height: 70px;
+            font-size: 1.5em;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
+            -webkit-transition: background-color 100ms linear;
+            transition: background-color 100ms linear;
+        }
+        .md-panel{
+            padding: 25px;
+            position: relative;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            -webkit-transition: background-color 100ms linear;
+            transition: background-color 100ms linear;
+        }
+        .md-icon{
+            text-align: center;
+            font-size: 1.2em;
+            padding: 25px;
+        }
+    </style>
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+
+
+<div class="container-fluid" ng-controller="colorizrCtrl">
+    <div class="col-md-6">
+
+        <div class="row">
+            <div class="col-md-12" style="padding: 0;">
+                <input colorpicker="hex" type="text" ng-model="color" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" ng-style="{'background-color': colors[5]}">
+                <h3>PRIMARY <small>500</small></h3>
+                <h5>{{colors[5] | uppercase}}</h5>
+            </div>
+        </div>
+
+       <div class="row">
+           <div class="col-md-4" ng-repeat="(key, val) in colors track by $id(key)" ng-style="{'background-color': val}" ng-if="val" >
+               <h3 ng-if="key == 0">50</h3>
+               <h3 ng-if="key > 0 && key <= 9">{{key * 100}}</h3>
+               <h3 ng-if="key > 9 && key <=11">A{{((key+1) - 10)*100}}</h3>
+               <h3 ng-if="key == 12">A400</h3>
+               <h3 ng-if="key == 13">A700</h3>
+               <h3 ng-if="key == 14">ACCENT</h3>
+               <h3 ng-if="key == 15">ACCENT DARK</h3>
+               <h3 ng-if="key == 16">PRIMARY TEXT</h3>
+               <h3 ng-if="key == 17">SECONDARY TEXT</h3>
+               <h3 ng-if="key == 18">SEPARATOR</h3>
+               <h3 ng-if="key == 19">TEXT/ICON</h3>
+               <h5>{{val | uppercase}}</h5>
+           </div>
+       </div>
+
+    </div>
+    <div class="col-md-6">
+        <div style="height: 20px; background-color: {{colors[7]}}" class="row"></div>
+        <div class="md-panel row" style="background-color: {{colors[5]}};">
+            <h4 style="color:{{colors[19]}};"><i class="fa fa-arrow-left"></i></h4>
+            <h2 style="color:{{colors[19]}};">Palette preview</h2>
+            <p style="color:{{colors[1]}};">Full Palette colors below</p>
+            <span class="md-btn-fab" style="background-color: {{colors[14]}};color:{{colors[19]}};"> <i class="fa fa-star"></i> </span>
+        </div>
+        <br>
+        <div class="row">
+            <div class="pull-left md-icon" style="color: {{colors[17]}};"><i class="fa fa-heart"></i></div>
+            <div class="pull-left">
+                <h4><a href="http://www.materialup.com/" target="_blank" style="color: {{colors[16]}}">Daily Material Design Showcase</a></h4>
+                <p style="color: {{colors[17]}}">Visit MaterialUp</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <hr style="border-top: 1px solid {{colors[18]}}">
+
+    </div>
+</div>
+
+
+
+
+<script src="jquery/dist/jquery.js"></script>
+<script src="colorcolor/dist/colorcolor.min.js" ></script>
+<script src="angular/angular.js"></script>
+<script src="tinycolor/dist/tinycolor-min.js"></script>
+<script src="angular-animate/angular-animate.js"></script>
+<script src="angular-touch/angular-touch.js"></script>
+<script src="angular-bootstrap/ui-bootstrap.js"></script>
+<script src="angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
+<script src="angular-resource/angular-resource.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

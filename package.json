@@ -1,0 +1,26 @@
+{
+  "name": "colorizr",
+  "version": "1.0.0",
+  "description": "colorizr is a magic tools that allow you to generate a full custom material design colors palette from one primary color.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "material",
+    "design",
+    "google",
+    "tool",
+    "color",
+    "primary",
+    "accent"
+  ],
+  "author": "Ferouk Bouazza <BouazzaFerouk@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "color": "^1.0.3",
+    "express": "^4.15.2",
+    "material-palette": "^1.0.0"
+  }
+}
