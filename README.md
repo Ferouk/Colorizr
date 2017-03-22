@@ -2,7 +2,7 @@
 
 <img src="https://github.com/Ferouk/Colorizr/raw/master/public/favicon.png" />
 
-Colorizr is a material design color palette generator based on one hex color. You can see [demo](https://colorizr-ferouk.c9users.io/) for more details.
+Colorizr is a material design color palette generator based on one hex color.
 
 Screenshot
 ----------
